@@ -1,0 +1,243 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7 lt-ie10"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8 lt-ie10"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Proton UI - Calendar</title>
+    <meta name="description" content="Page Description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="styles/bootstrap.css">
+
+    <!-- Page-specific Plugin CSS: -->
+    <link rel="stylesheet" href="styles/vendor/fullcalendar.css" media="screen" />
+
+
+    <!-- Proton CSS: -->
+    <link rel="stylesheet" href="styles/proton.css">
+    <link rel="stylesheet" href="styles/vendor/animate.css">
+
+    <!-- adds CSS media query support to IE8   -->
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+    <script src="scripts/vendor/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fonts CSS: -->
+    <link rel="stylesheet" href="styles/font-awesome.css" type="text/css" />
+    <link rel="stylesheet" href="styles/font-titillium.css" type="text/css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="styles/custom.css">
+
+    <!-- Common Scripts: -->
+    <script>
+        (function () {
+            var js;
+            if (typeof JSON !== 'undefined' && 'querySelector' in document && 'addEventListener' in window) {
+                js = 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js';
+            } else {
+                js = 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js';
+            }
+            document.write('<script src="' + js + '"><\/script>');
+        }());
+    </script>
+    <script src="scripts/vendor/modernizr.js"></script>
+    <script src="scripts/vendor/jquery.cookie.js"></script>
+</head>
+
+<body>
+
+<script>
+    var theme = $.cookie('protonTheme') || 'default';
+    $('body').removeClass (function (index, css) {
+        return (css.match (/\btheme-\S+/g) || []).join(' ');
+    });
+    if (theme !== 'default') $('body').addClass(theme);
+</script>
+<!--[if lt IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+
+<section class="sidebar extended">
+    <script>
+        $(document).ready(function() {
+            if ($.cookie('protonSidebar') == 'retracted') {
+                $('.sidebar').removeClass('extended').addClass('retracted');
+                $('.wrapper').removeClass('retracted').addClass('extended');
+            }
+            if ($.cookie('protonSidebar') == 'extended') {
+                $('.wrapper').removeClass('extended').addClass('retracted');
+                $('.sidebar').removeClass('retracted').addClass('extended');
+            }
+        });
+    </script>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <ul class="profile">
+                <li class="logo-ft"><a href="#"><img src="images/custom-icons/ftv-logo.png" alt=""/></a></li>
+                <li class="profile-info">
+                    <div><img src="images/custom-icons/317_max.jpg" alt=""/><span>Leyla Davidov</span></div>
+                </li>
+            </ul>
+            <ul class="feeds_list">
+                <li><i class="fa fa-rss"></i>pd18</li>
+                <li><i class="fa fa-rss"></i>pd13</li>
+                <li><i class="fa fa-rss"></i>photographers feed</li>
+            </ul>
+            <div class="calendar-type-btn">
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-danger">
+                        <input type="radio" name="optionsonoff" id="optionof1"> epg
+                    </label>
+                    <label class="btn btn-success active">
+                        <input type="radio" name="optionsonoff" id="optionof2"> formats
+                    </label>
+                </div>
+            </div>
+            <span data-toggle="modal" data-target="#replace-program-modal">
+                <a class="replace-icon btn uses-tooltip" data-toggle="tooltip" data-placement="right" title="" data-original-title="Search and replace">
+                    <i class="fa fa-file-o"></i><i class="fa fa-search-plus"></i>
+                </a>
+            </span>
+
+
+            <div class="input-group">
+                <input type="text" class="form-control">
+                <div class="input-group-btn">
+                    <button class="btn btn-default btn-search" type="button"><i class="icon-search"></i></button>
+                </div>
+            </div>
+            <div class="program_filter btn-group" data-toggle="buttons">
+                <label class="btn btn-primary">
+                    <input type="checkbox"> 30
+                </label>
+                <label class="btn btn-primary active">
+                    <input type="checkbox"> 60
+                </label>
+                <label class="btn btn-primary active">
+                    <input type="checkbox"> 90
+                </label>
+                <label class="btn btn-primary active">
+                    <input type="checkbox"> 120
+                </label>
+            </div>
+        </div>
+        <div class="panel-body tree-body">
+            <div class="scrollable">
+                <ul class="programs_list">
+                    <li>Photographer night</li>
+                    <li>Photographer night</li>
+                    <li>Photographer night</li>
+                    <li>Photographer night</li>
+                    <li>Photographer night</li>
+                    <li>Photographer night</li>
+                    <li>Photographer night</li>
+                    <li>Photographer night</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-handle">
+        <i class="icon-ellipsis-horizontal"></i>
+        <i class="icon-ellipsis-vertical"></i>
+    </div>
+</section>
+
+<section class="wrapper retracted scrollable">
+
+<script>
+    if (!($('body').is('.dashboard-page') || $('body').is('.login-page'))){
+        if ($.cookie('protonSidebar') == 'retracted') {
+            $('.wrapper').removeClass('retracted').addClass('extended');
+        }
+        if ($.cookie('protonSidebar') == 'extended') {
+            $('.wrapper').removeClass('extended').addClass('retracted');
+        }
+    }
+</script>
+
+<div class="row">
+    <div>
+        <div class="panel panel-default panel-block calendar" id="calendar"></div>
+    </div>
+
+    <!--<div class="col-md-3">
+        <div class="panel panel-default panel-block">
+            <div class="list-group">
+                <div class="list-group-item">
+                    <h4 class="section-title">Add Events</h4>
+                    <div class="form-group custom-events">
+                        <input type="text" placeholder="Placeholder Text" value="Code,Design,Meeting,Conference,Launch" data-role="tagsinput" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</div>
+</section>
+
+
+
+<!-- Modal -->
+
+<div id="replace-program-modal" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Find and replace window</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+
+
+
+<script src="scripts/bootstrap.min.js"></script>
+
+<!-- Custom scripts -->
+<script src="scripts/custom.js"></script>
+
+<!-- Proton base scripts: -->
+
+<script src="scripts/main.js"></script>
+<script src="scripts/proton/common.js"></script>
+<script src="scripts/proton/main-nav.js"></script>
+<script src="scripts/proton/user-nav.js"></script>
+
+
+
+<!-- Page-specific scripts: -->
+<script src="scripts/proton/sidebar.js"></script>
+<!-- jsTree -->
+<script src="scripts/vendor/jquery.jstree.js"></script>
+
+<!-- fullcalendar-1.6.4 -->
+<!-- http://arshaw.com/fullcalendar/ -->
+<script src="scripts/vendor/fullcalendar.min.js"></script>
+<script src="scripts/vendor/jquery-ui.custom.min.js"></script>
+
+<!-- Bootstrap Tags Input -->
+<!-- http://timschlechter.github.io/bootstrap-tagsinput/examples/ -->
+<script src="scripts/vendor/bootstrap-tagsinput.min.js"></script>
+
+<script src="scripts/proton/calendar.js"></script>
+</body>
+</html>
