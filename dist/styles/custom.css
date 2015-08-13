@@ -5,10 +5,13 @@ li {
     margin-top: 0;
 }
 
+/*media screen*/
+
 @media (min-width: 480px) {
     .sidebar.extended {
-         width: 250px;
-         left: 0;
+        width: 250px;
+        left: 0;
+        overflow: visible;
      }
 
     .sidebar {
@@ -28,14 +31,35 @@ li {
     }
 
     .sidebar .tree-body {
-        top: 485px;
+        top: 500px;
+    }
+
+    .sidebar .panel {
+        width: auto;
+        padding: 20px;
     }
 }
 
+@media (min-width: 768px){
+    .modal-dialog {
+        width: 800px;
+    }
+}
+
+@media (min-width: 680px) {
+    .calendar .fc-header td {
+        width: 40%;
+    }
+}
+
+    /*common*/
+
+.sidebar.retracted .panel-default {
+    display: none;
+}
 
 
-
-
+/*left nav*/
 .profile .logo-ft,
 .profile-info {
     text-align: center;
@@ -70,15 +94,17 @@ li {
 }
 
 .feeds_list li {
-    padding: 5px 20px;
     text-transform: uppercase;
     vertical-align: bottom;
     color: #686868;
 }
 
+.feeds_list li:hover a {
+    color: #4099e5;
+}
+
 .feeds_list li:hover {
     background-color: rgba(165, 200, 229, 0.32);
-    color: #4099e5;
 }
 
 .feeds_list li i {
@@ -87,13 +113,16 @@ li {
     vertical-align: middle;
 }
 
+.feeds_list li a{
+    color: #686868;
+    display: block;
+    padding: 5px 0;
+}
+
 .sidebar .panel-body {
     padding: 0;
 }
 
-.calendar-type-btn {
-    padding: 0 20px;
-}
 .calendar-type-btn .btn {
     color: #C3C3C3;
     display: inline-block;
@@ -115,7 +144,7 @@ li {
 
 .replace-icon {
     display: inline-block;
-    padding: 0px 0px 0px 20px;
+    padding: 0;
     font-size: 22px;
     position: relative;
     color: #76b6ec;
@@ -130,45 +159,179 @@ li {
 
 .replace-icon .fa-search-plus {
     font-size: 15px;
-    left: 26px;
+    left: 8px;
     position: absolute;
     top: 15px;
 }
 .sidebar .panel-body .input-group {
-    padding: 0 20px;
+    padding: 0;
     margin-top: 10px;
 }
 
-.modal h4 {
-    text-transform: uppercase;
-}
 .program_filter {
     margin-top: 10px;
-    padding: 0 20px;
 }
 
 .program_filter .btn {
     padding: 6px 16px 6px 17px;
 }
 
-.programs_list {
-     padding-left: 20px;
-     width: 228px;
- }
-
-.programs_list li {
-    background-color: #ff0024;
-    padding: 5px 10px;
-    color: #fff;
-    margin-bottom: 5px;
-}
 .fc .fc-agendaWeek-view .fc-bg tr > td{
     border: 2px solid grey;
 }
 
 
+.bootstrap-tagsinput .tag [data-role="remove"] {
+    display: none;
+}
+
+.panel.panel-block .list-group .list-group-item {
+    padding: 0;
+}
+
+.bootstrap-tagsinput {
+    background-color: transparent;
+    border: none;
+}
+
+.programs_list {
+    margin-top: 10px;
+}
+
+.programs_list .panel {
+    padding: 0;
+}
+
+.bootstrap-tagsinput {
+    padding: 0;
+}
+
+.bootstrap-tagsinput .tag {
+    display: block;
+    text-align: left;
+    margin-right: 0;
+}
+
+.btn-primary {
+    background-color: #a5c8e5;
+    border-color: #a5c8e5;
+}
+
+.bootstrap-tagsinput .tag {
+    background-color: #00b36f;
+}
+
+.bootstrap-tagsinput input {
+    display: none;
+}
 
 
+/*calendar*/
 
 
+.fc-ltr .fc-event-hori.fc-event-end, .fc-rtl .fc-event-hori.fc-event-start {
+    background-color: #DD1144;
+    border-color: #DD1144;
+}
 
+.fc-event {
+    text-transform: uppercase;
+    background-color: #00b36f;
+    border-color: #00b36f;
+    }
+
+.fc-event-time {
+    display: none;
+}
+
+    /*.fc-event-title {
+        height: 15px;
+    }*/
+
+/*.calendar .fc-header td.fc-header-right {
+    display: none;
+}*/
+
+.fc-agenda .fc-agenda-axis {
+    padding-right: 8px;
+}
+
+.fc-slot0 th, .fc-slot1 th, .fc-slot2 th, .fc-slot3 th, .fc-slot4 th, .fc-slot5 th, .fc-slot6 th, .fc-slot7 th, .fc-slot8 th, .fc-slot9 th, .fc-slot10 th, .fc-slot11 th{
+    border-right: 6px solid #fdd900;
+}
+
+.fc-slot12 th, .fc-slot13 th, .fc-slot14 th, .fc-slot15 th, .fc-slot16 th, .fc-slot17 th, .fc-slot18 th, .fc-slot19 th, .fc-slot20 th, .fc-slot21 th, .fc-slot22 th, .fc-slot23 th{
+    border-right: 6px solid #ea0083;
+}
+
+.fc-slot24 th, .fc-slot25 th, .fc-slot26 th, .fc-slot27 th, .fc-slot28 th, .fc-slot29 th, .fc-slot30 th, .fc-slot31 th, .fc-slot32 th, .fc-slot33 th, .fc-slot34 th, .fc-slot35 th{
+    border-right: 6px solid #0146eb;
+}
+
+.header-calendar-cont {
+    width: 260px;
+    float: right;
+    margin-right: 15px;
+}
+
+.header-calendar-cont input {
+    display: inline-block;
+    width: 79%;
+    margin-left: 15px;
+}
+
+.header-calendar-cont label {
+    text-transform: uppercase;
+    width: 50px;
+}
+
+.header-calendar-cont .calendar-container .fa-calendar {
+    right: 0px;
+}
+
+.calendar .fc-header td {
+    width: 40%;
+}
+
+.ui-resizable-handle.ui-resizable-e {
+    display: none;
+}
+
+
+/*modal*/
+
+.modal h4 {
+    text-transform: uppercase;
+}
+
+.modal-footer button {
+    text-transform: uppercase;
+}
+
+#replace-program-modal .row {
+    min-height: 150px;
+}
+
+#replace-program-modal .row label {
+    text-transform: uppercase;
+    width: 75px;
+}
+
+#replace-program-modal .row select,
+#replace-program-modal .row input {
+    display: inline-block;
+    width: 79%;
+    margin-bottom: 40px;
+}
+
+.calendar-container {
+    position: relative;
+}
+
+.calendar-container .fa-calendar {
+    position: absolute;
+    top: 8px;
+    font-size: 18px;
+    right: 15px;
+    color: #4099e5;
+}

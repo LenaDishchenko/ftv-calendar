@@ -32,10 +32,22 @@ proton.calendar = {
 				header: {
 					left: 'prev,next',
 					center: 'title',
-					right: 'today,month,agendaWeek,agendaDay'
+					right: ' ',
+                    editable: false,
+                    droppable: false,
+                    resizable: false
 				},
+                defaultEventMinutes: 30,
+                defaultView: 'agendaWeek',
 				editable: true,
-				droppable: true, 
+				droppable: true,
+                resizable: false,
+                minTime: 6,
+                maxTime: 24,
+                eventAfterAllRender: function() {
+                    $('.header-calendar-cont').appendTo('.fc-header-right');
+                    $('.fc-event-hori.fc-event-end').appendTo
+                },
 				drop: function(date, allDay) { // this function is called when something is dropped
 					
 						// retrieve the dropped element's stored Event Object
@@ -59,54 +71,8 @@ proton.calendar = {
 						}
 						
 					}
-				,
-				events: [
-					{
-						title: 'All Day Event',
-						start: new Date(y, m, 1)
-					},
-					{
-						title: 'Long Event',
-						start: new Date(y, m, d-5),
-						end: new Date(y, m, d-2),
-						className:'bg-primary'
-					},
-					{
-						id: 999,
-						title: 'Repeating Event',
-						start: new Date(y, m, d-3, 16, 0),
-						allDay: false
-					},
-					{
-						id: 999,
-						title: 'Repeating Event',
-						start: new Date(y, m, d+4, 16, 0),
-						allDay: false
-					},
-					{
-						title: 'Meeting',
-						start: new Date(y, m, d, 10, 30),
-						allDay: false
-					},
-					{
-						title: 'Lunch',
-						start: new Date(y, m, d, 12, 0),
-						end: new Date(y, m, d, 14, 0),
-						allDay: false
-					},
-					{
-						title: 'Birthday Party',
-						start: new Date(y, m, d+1, 19, 0),
-						end: new Date(y, m, d+1, 22, 30),
-						allDay: false
-					},
-					{
-						title: 'Click for Google',
-						start: new Date(y, m, 28),
-						end: new Date(y, m, 29),
-						url: 'http://google.com/'
-					}
-				]
+
+
 			});
 		});
 		$('.calendar .fc-button').addClass('btn').addClass('btn-info').addClass('btn-xs');
@@ -115,7 +81,7 @@ proton.calendar = {
 		// Documentation here:
 		// http://arshaw.com/fullcalendar/docs/event_data/Event_Object/
 		var eventObject = {
-			title: $.trim($this.text()), // use the element's text as the event title
+			title: $.trim($this.text()) // use the element's text as the event title
 		};
 		
 		$this.data('eventObject', eventObject);
