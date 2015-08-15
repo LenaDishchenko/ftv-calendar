@@ -41,12 +41,17 @@ proton.calendar = {
                 defaultView: 'agendaWeek',
 				editable: true,
 				droppable: true,
-                resizable: false,
-                minTime: 6,
+                disableResizing: true,
+                minTime: 0,
                 maxTime: 24,
+                axisFormat: 'H:mm',
                 eventAfterAllRender: function() {
-                    $('.header-calendar-cont').appendTo('.fc-header-right');
-                    $('.fc-event-hori.fc-event-end').appendTo
+                    if ($('.fc-header-right .header-calendar-cont').length == 0) {
+                        $('.header-calendar-cont').appendTo('.fc-header-right');
+                    }
+                    $('.fc-event-hori').off('dblclick').on('dblclick', function() {
+                        $('#all-day-event-modal').modal('show');
+                    });
                 },
 				drop: function(date, allDay) { // this function is called when something is dropped
 					
@@ -55,11 +60,14 @@ proton.calendar = {
 						
 						// we need to copy it, so that multiple events don't have a reference to the same object
 						var copiedEventObject = $.extend({}, originalEventObject);
-						
+
 						// assign it the date that was reported
+                        if (originalEventObject.duration != undefined) {
+                            copiedEventObject.add_time_to_defaultEventMinutes = originalEventObject.duration;
+                        }
 						copiedEventObject.start = date;
 						copiedEventObject.allDay = allDay;
-						
+
 						// render the event on the calendar
 						// the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
 						$('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
@@ -77,11 +85,12 @@ proton.calendar = {
 		});
 		$('.calendar .fc-button').addClass('btn').addClass('btn-info').addClass('btn-xs');
 	},
-	addDragEvent: function($this){
+	addDragEvent: function($this) {
 		// Documentation here:
 		// http://arshaw.com/fullcalendar/docs/event_data/Event_Object/
 		var eventObject = {
-			title: $.trim($this.text()) // use the element's text as the event title
+			title: $.trim($this.text()),
+            duration: $this.data('duration')
 		};
 		
 		$this.data('eventObject', eventObject);

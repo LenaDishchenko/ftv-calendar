@@ -58,6 +58,10 @@ li {
     display: none;
 }
 
+.sidebar .sidebar-handle {
+    width: 18px;
+    box-shadow: -1px 2px 2px 0px #ccc;
+}
 
 /*left nav*/
 .profile .logo-ft,
@@ -269,9 +273,9 @@ li {
 }
 
 .header-calendar-cont {
-    width: 260px;
+    width: 280px;
     float: right;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 .header-calendar-cont input {
@@ -334,4 +338,35 @@ li {
     font-size: 18px;
     right: 15px;
     color: #4099e5;
+}
+
+#replace-program-modal .replace-icon {
+    color: #333333;
+    margin: 0;
+    vertical-align: middle;
+}
+#replace-program-modal .replace-icon .fa-search-plus {
+    top: 10px;
+}
+
+#all-day-event-modal .modal-body {
+    padding: 0 20px;
+    text-transform: uppercase;
+}
+
+#all-day-event-modal .col-lg-6{
+    padding: 20px;
+    min-height: 200px;
+}
+
+#all-day-event-modal .col-lg-6:first-child {
+    border-right: 5px solid #e5e5e5;
+}
+
+#all-day-event-modal .modal-event-title {
+    font-weight: 800;
+}
+
+#all-day-event-modal .col-lg-6 ul {
+    margin-left: 20px;
 }

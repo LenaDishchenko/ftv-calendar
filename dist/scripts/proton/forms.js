@@ -47,10 +47,19 @@ proton.formComponents = {
 
 		$('.datetimepicker-default').datetimepicker();
 		$('.datetimepicker-month').datetimepicker({
-			format : 'yyyy-mm-dd',
+			format : 'DD, MM d, yyyy',
 			minView : 'month',
-			maxView : 'month'
+			maxView : 'month',
+            autoclose: true
 		});
+        $('#gotocalendar').datetimepicker({
+            format : 'DD, MM d, yyyy',
+            minView : 'month',
+            maxView : 'month',
+            autoclose: true
+        }).on('changeDate', function(event) {
+            $('#calendar').fullCalendar('gotoDate', event.date);
+        });
 		$('.datetimepicker-range').datetimepicker({
 			format : 'yyyy-mm-dd',
 			minView : 'month',

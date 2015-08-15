@@ -103,9 +103,6 @@
                     <i class="fa fa-file-o"></i><i class="fa fa-search-plus"></i>
                 </a>
             </span>
-            <div><a class=" " data-toggle="modal" data-target="#replace-program-modal">modal 2</a></div>
-
-
             <div class="input-group">
                 <input type="text" class="form-control">
                 <div class="input-group-btn">
@@ -137,14 +134,19 @@
                 <div class="list-group">
                     <div class="list-group-item">
                         <div class="form-group custom-events">
-                            <input type="text" placeholder="Placeholder Text" value="Photographer night,Photographer night 2,Photographer night 3,Photographer night 4,Photographer night 5" data-role="tagsinput" />
+                            <div class="bootstrap-tagsinput">
+                                <span class="tag label label-info ui-draggable" style="position: relative;" data-duration="30">Photographer night<span data-role="remove" class="ui-draggable" style="position: relative;"></span></span>
+                                <span class="tag label label-info ui-draggable" style="position: relative;" data-duration="60">Photographer night 60<span data-role="remove" class="ui-draggable" style="position: relative;"></span></span>
+                                <span class="tag label label-info ui-draggable" style="position: relative;" data-duration="90">Photographer night 90<span data-role="remove" class="ui-draggable" style="position: relative;"></span></span>
+                                <span class="tag label label-info ui-draggable" style="position: relative;" data-duration="120">Photographer night 120<span data-role="remove" class="ui-draggable" style="position: relative;"></span></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="header-calendar-cont">
-            <div class="calendar-container"><label>go to:</label><input type="text" value="2012-05-15" class="datetimepicker-month form-control"><i class="fa fa-calendar"></i></div>
+            <div class="calendar-container"><label>go to:</label><input id="gotocalendar" type="text" value="Wednesday, August 5, 2015" class="datetimepicker-month form-control"><i class="fa fa-calendar"></i></div>
         </div>
 
     </div>
@@ -185,31 +187,36 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Find and replace window</h4>
+                <h4 class="modal-title">
+                    <span class="replace-icon">
+                        <i class="fa fa-file-o"></i><i class="fa fa-search-plus"></i>
+                    </span>
+                    <span class="">Find and replace window</span>
+                </h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-6">
                         <label>find</label><select class="form-control" id="source">
-                            <option value="AK">Photographer night 1</option>
-                            <option value="HI">Photographer night 2</option>
-                            <option value="CA">Photographer night 3</option>
-                            <option value="NV">Photographer night 4</option>
-                            <option value="OR">Photographer night 5</option>
-                            <option value="WA">Photographer night 6</option>
-                        </select>
-                        <div class="calendar-container"><label>from</label><input type="text" value="2012-05-15" class="datetimepicker-month form-control"><i class="fa fa-calendar"></i></div>
+                        <option value="AK">Photographer night 1</option>
+                        <option value="HI">Photographer night 2</option>
+                        <option value="CA">Photographer night 3</option>
+                        <option value="NV">Photographer night 4</option>
+                        <option value="OR">Photographer night 5</option>
+                        <option value="WA">Photographer night 6</option>
+                    </select>
+                        <div class="calendar-container"><label>from</label><input type="text" value="Friday, May 25, 2012" class="datetimepicker-month form-control"><i class="fa fa-calendar"></i></div>
                     </div>
                     <div class="col-lg-6">
                         <label>replace</label><select class="form-control" id="source2">
-                            <option value="AK">Photographer night 1</option>
-                            <option value="HI">Photographer night 2</option>
-                            <option value="CA">Photographer night 3</option>
-                            <option value="NV">Photographer night 4</option>
-                            <option value="OR">Photographer night 5</option>
-                            <option value="WA">Photographer night 6</option>
-                        </select>
-                        <div class="calendar-container"><label>to</label><input type="text" value="2012-05-15" class="datetimepicker-month form-control"><i class="fa fa-calendar"></i></div>
+                        <option value="AK">Photographer night 1</option>
+                        <option value="HI">Photographer night 2</option>
+                        <option value="CA">Photographer night 3</option>
+                        <option value="NV">Photographer night 4</option>
+                        <option value="OR">Photographer night 5</option>
+                        <option value="WA">Photographer night 6</option>
+                    </select>
+                        <div class="calendar-container"><label>to</label><input type="text" value="Friday, May 25, 2012" class="datetimepicker-month form-control"><i class="fa fa-calendar"></i></div>
                     </div>
                 </div>
 
@@ -221,8 +228,48 @@
     </div><!-- /.modal-dialog -->
 </div>
 
+<div id="all-day-event-modal" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">
+                    <i class="fa fa-globe"></i>
+                    <span>Events taking place on this day</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <span class="modal-event-title">birthdays</span>
+                        <ul>
+                            <li>Nicolas cage</li>
+                            <li>lady gaga</li>
+                            <li>Natasha poly</li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                            <span class="modal-event-title">other events</span>
+                        <ul>
+                            <li>valentines day</li>
+                            <li>chinies ney year</li>
+                            <li>white ball, vienna</li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
 
-
+`
 
 
 <script src="scripts/bootstrap.min.js"></script>
